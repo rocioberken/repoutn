@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--
+	NOTES:
+	1. All tokens are represented by '$' sign in the template.
+	2. You can write your code only wherever mentioned.
+	3. All occurrences of existing tokens will be replaced by their appropriate values.
+	4. Blank lines will be removed automatically.
+	5. Remove unnecessary comments before creating your template.
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="authoring-tool" content="Adobe_Animate_CC">
+<title>TALZ_Now_Approved_Banners_728x90</title>
+<!-- write your code here -->
+<style type="text/css">
+        /* Added class to hide the container */
+        .hide {
+            display: none !important;
+        }
+
+        @keyframes fade {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+        }
+
+        .fade {
+            -webkit-animation: fade 0.3s 0s 1 linear forwards;
+            -moz-animation: fade 0.3s 0s 1 linear forwards;
+            -ms-animation: fade 0.3s 0s 1 linear forwards;
+            -o-animation: fade 0.3s 0s 1 linear forwards;
+            animation: fade 0.3s 0s 1 linear forwards;
+        }
+
+        /* Added class ends */
+
+	#isi {
+		overflow: hidden;
+		position: absolute;
+		width: 291px;
+		height: 90px;
+		top: 0px;
+		left: 437px;
+		z-index: 500;
+        opacity: 0;
+	}
+
+	#isiText {
+		width: 280px;
+		height: auto;
+		margin-left: 2px;
+        margin-top:-18px;
+	}
+
+    .clicktag {
+		cursor: pointer;
+	}
+
+	.container {
+		overflow: auto;
+        position: relative;
+        width: 728px;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 10px;
+        color: #58585a;
+	}
+
+	.all-themes .container {
+            width: 290px;
+            height: 70px;
+            float: left;
+            margin-top: 2px;
+    }
+
+    #bottomIsiArea {
+            position: absolute;
+            width: 99px;
+            height: 12px;
+            top: 13px;
+            left: 102px;
+    }
+
+    .isi_bottom {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            z-index: 600;
+    }
+
+	/* SIMPLEBAR STYLES START */
+
+        .simplebar-scrollbar {
+            background-color: #cbc8c8;
+            height: 14px !important;
+            margin-top: 0px;
+            margin-left: 1px;
+            width: 6px;
+            /* CHANGES WIDTH OF THE SCROLLBAR */
+            pointer-events: all !important;
+            cursor: pointer;
+            border-radius: 3px !important;
+            min-height: 0px !important;
+            /* KEEP THIS AT 0 AND ADJUST THE HEIGHT IN THE SCRIPT AT THE BOTTOM OF THIS FILE */
+        }
+
+        .simplebar-scrollbar:before {
+            position: absolute;
+            content: '';
+            background: transparent !important;
+        }
+
+        .simplebar-track {
+            background-color: #ffffff !important;
+            border-left: 1px solid #f1efee;
+            width: 8px !important;
+            /* CHANGES WIDTH OF THE TRACK */
+            margin: 0px 0px !important;
+        }
+
+        .simplebar-track.simplebar-vertical {
+            top: 0px !important;
+        }
+
+        /* SIMPLEBAR STYLES END */
+</style>
+<script type="text/javascript" src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
+<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+<script src="TALZ_Now_Approved_Banners_728x90.js"></script>
+
+<!-- SIMPLEBAR & GSAP LINKS START -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollToPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.5/simplebar.min.js"
+    integrity="sha512-PXNAvB6wWywrk43aV52x7sFuo+m/2cUJYGNGYe+frlHLVMd4vEMEAvHFg1b88wECIk7r/TOejo5xL63Uf/JmHg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.5/simplebar.css"
+    integrity="sha512-0EGld845fSKUDzrxFGdF//lic4e8si6FTrlLpOlts8P0ryaV8XkWy/AnwH9yk0G1wHcOvhY9L14W5LCMWa7W+Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- SIMPLEBAR & GSAP LINKS END -->
+<!-- <script type="text/javascript">
+    var clickTag1 = "";
+    var clickTag2 = "";
+</script> -->
+<script>
+    var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+    if (Enabler.isInitialized()) {
+        init();
+    } else {
+        Enabler.addEventListener(studio.events.StudioEvent.INIT, init);
+    }
+    // Runs when Enabler is ready.
+    function init() {
+        if (Enabler.isPageLoaded()) {
+            politeInit();
+        } else {
+            Enabler.addEventListener(studio.events.StudioEvent.PAGE_LOADED, politeInit);
+        }
+    };
+    function politeInit() {
+        canvas = document.getElementById("canvas");
+        anim_container = document.getElementById("animation_container");
+        dom_overlay_container = document.getElementById("dom_overlay_container");
+        var comp = AdobeAn.getComposition("F2CBF3F7F7AE41148800DC0830EB69C1");
+        var lib = comp.getLibrary();
+        var loader = new createjs.LoadQueue(false);
+        loader.addEventListener("fileload", function (evt) { handleFileLoad(evt, comp) });
+        loader.addEventListener("complete", function (evt) { handleComplete(evt, comp) });
+        var lib = comp.getLibrary();
+        loader.loadManifest(lib.properties.manifest);
+    }
+    function handleFileLoad(evt, comp) {
+        var images = comp.getImages();
+        if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }
+    }
+    function handleComplete(evt, comp) {
+        //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+        var lib = comp.getLibrary();
+        var ss = comp.getSpriteSheet();
+        var queue = evt.target;
+        var ssMetadata = lib.ssMetadata;
+        for (i = 0; i < ssMetadata.length; i++) {
+            ss[ssMetadata[i].name] = new createjs.SpriteSheet({ "images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames })
+        }
+        exportRoot = new lib.TALZ_Now_Approved_Banners_728x90();
+        stage = new lib.Stage(canvas);
+        //Registers the "tick" event listener.
+        fnStartAnimation = function () {
+            stage.addChild(exportRoot);
+            createjs.Ticker.framerate = lib.properties.fps;
+            createjs.Ticker.addEventListener("tick", stage);
+        }
+        //Code to support hidpi screens and responsive scaling.
+        AdobeAn.makeResponsive(false, 'both', false, 1, [canvas, anim_container, dom_overlay_container]);
+        AdobeAn.compositionLoaded(lib.properties.id);
+        fnStartAnimation();
+    }
+</script>
+<!-- write your code here -->
+</head>
+<body style="margin:0px;">
+	<div style="z-index: 9999; position: absolute; background-color: black; height: 90px; width: 1px; left:0px; top: 0px;"></div>
+    <div style="z-index: 9999; position: absolute; background-color: black; height: 90px; width: 1px; left:727px; top: 0px;"></div>
+    <div style="z-index: 9999; position: absolute; background-color: black; height: 1px; width: 728px; left:0px; top: 0px;"></div>
+    <div style="z-index: 9999; position: absolute; background-color: black; height: 1px; width: 728px; left:0px; top: 89px;"></div>
+	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:728px; height:90px">
+		<!-- <a href="javascript:void(window.open(window.clickTag1), console.log('clickTag1'))"> -->
+			<canvas id="canvas" width="728" height="600" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+		<!-- </a> -->
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:728px; height:90px; position: absolute; left: 0px; top: 0px; display: block;">
+		</div>
+	</div>
+	<div id="isi">
+        <div class="all-themes">
+	        <div id="content-d" class="container">
+	        	<br/>
+	        	<img id="isiText" src="images/ISI.jpg">
+	        	<span id="scroll_end"></span>
+	        </div>
+	    </div>
+	    <div class="isi_bottom ">
+            <div id="bottomIsiArea"></div>
+            <img src="images/pi.png" style="width:290px; margin-bottom: -3px;">
+        </div>
+    </div>
+	<script>
+		new SimpleBar(document.getElementById('content-d'), {
+			scrollbarMaxSize: 15
+		})
+	</script>
+</body>
+</html>
